@@ -1,0 +1,3 @@
+web3
+flare-python-periphery-package # TODO
+python-dotenv
