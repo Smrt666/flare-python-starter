@@ -22,3 +22,4 @@ After that you can try:
 * create_account.py, copy env.example into .env and set ACCOUNT and ACCOUNT_PRIVATE_KEY
 * get some free c2flr on https://faucet.flare.network/coston2
 * make_transaction.py
+* ftsov2_consumer.py
