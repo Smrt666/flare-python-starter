@@ -7,3 +7,5 @@ abi3 = fpp.name_to_abi("IWNat", "coston2")
 
 print(f"abi1 == abi2: {abi1 == abi2}")
 print(f"abi2 == abi3: {abi2 == abi3}")
+
+print(f"abi1: {str(abi1)[:50]}...")

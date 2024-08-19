@@ -16,7 +16,11 @@ def get_rpc(chain: str) -> str:
 
 
 def get_provider(chain: str) -> Web3:
-    w3 = Web3(HTTPProvider(get_rpc(chain)), middlewares=[geth_poa_middleware])
+    if chain in ("coston", "coston2"):
+        # we need proof of authority for coston and coston2
+        w3 = Web3(HTTPProvider(get_rpc(chain)), middlewares=[geth_poa_middleware])
+    else:
+        w3 = Web3(HTTPProvider(get_rpc(chain)))
 
     private_key = env.get("ACCOUNT_PRIVATE_KEY", None)
 
