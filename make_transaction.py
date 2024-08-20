@@ -9,9 +9,8 @@ w3 = get_provider("coston2")
 # first get some c2flr on https://faucet.flare.network/coston2,
 # othervise this program might not work
 
-WNat_contract = w3.eth.contract(
-    w3.to_checksum_address(fpp.name_to_address("WNat", w3)), abi=fpp.coston2.abis.IWNat
-)
+WNat_product = fpp.coston2.products.WNat
+WNat_contract = w3.eth.contract(WNat_product.get_address(w3), abi=WNat_product.abi)
 
 # send transaction
 tx_hash = WNat_contract.functions.deposit().transact({"value": w3.to_wei(1, "ether")})
