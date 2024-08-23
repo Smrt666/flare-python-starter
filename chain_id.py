@@ -1,6 +1,14 @@
-from utils import get_provider
+import asyncio
 
-w3 = get_provider("coston2")
-chain_id = w3.eth.chain_id
+from utils import get_async_provider
 
-print(f"Chain ID: {chain_id}")
+
+async def main():
+    w3 = await get_async_provider("coston2")
+    chain_id = await w3.eth.chain_id
+
+    print(f"Chain ID: {chain_id}")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

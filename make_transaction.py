@@ -1,20 +1,32 @@
+import asyncio
 from pprint import pprint
 
 import flare_python_periphery_package as fpp
 
-from utils import get_provider
+from utils import get_async_provider
 
-w3 = get_provider("coston2")
 
-# first get some c2flr on https://faucet.flare.network/coston2,
-# othervise this program might not work
+async def main():
+    w3 = await get_async_provider("coston2")
 
-WNat_product = fpp.coston2.products.WNat
-WNat_contract = w3.eth.contract(WNat_product.get_address(w3), abi=WNat_product.abi)
+    # first get some c2flr on https://faucet.flare.network/coston2,
+    # othervise this program might not work
 
-# send transaction
-tx_hash = WNat_contract.functions.deposit().transact({"value": w3.to_wei(1, "ether")})
-# wait for receipt
-tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+    WNat_product = fpp.coston2.products.WNat
+    WNat_contract = w3.eth.contract(
+        await WNat_product.async_get_address(w3),
+        abi=WNat_product.abi,
+    )
 
-pprint(tx_receipt)
+    # send transaction
+    tx_hash = await WNat_contract.functions.deposit().transact(
+        {"value": w3.to_wei(1, "ether")}
+    )
+    # wait for receipt
+    tx_receipt = await w3.eth.wait_for_transaction_receipt(tx_hash)
+
+    pprint(tx_receipt)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
