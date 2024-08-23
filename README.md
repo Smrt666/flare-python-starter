@@ -23,3 +23,8 @@ After that you can try:
 * get some free c2flr on [https://faucet.flare.network/coston2](https://faucet.flare.network/coston2)
 * `make_transaction.py`
 * `ftsov2_consumer.py`
+
+There is also an async version of this starter. You can try it by switching branches:
+```bash
+git checkout async
+```
